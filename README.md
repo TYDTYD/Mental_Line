@@ -1,4 +1,4 @@
-- 메인 이미지 넣기
+![캡처](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/4b99b8f8-e196-4a78-80b7-4d1647d86115)
 ### 프로젝트 소개
 - 게임 장르 : 하이퍼 캐쥬얼
 - 제작 기간 : 2022.07 ~ 2022.09
