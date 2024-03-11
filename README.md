@@ -1,6 +1,7 @@
 ## Mental Line
 ![캡처](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/4b99b8f8-e196-4a78-80b7-4d1647d86115)
 ![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/1124ace9-c2ca-4a05-afb9-4637537f931e)
+[플레이 영상](https://youtu.be/JhcfNx301ok)
 ### 프로젝트 소개
 - 게임 장르 : 하이퍼 캐쥬얼
 - 제작 기간 : 2022.07 ~ 2022.09
@@ -122,17 +123,7 @@
 }
   </code>
 </pre>
-- 영상 하나 넣으면 좋은데
 - GPGS를 통한 랭킹 시스템 도입
-<pre>
-  <code>
-    
-  </code>
-</pre>
-- 이미지 넣기
-- PlayerPrefs를 통한 단순한 게임 저장 시스템 도입
-<pre>
-  <code>
-    
-  </code>
-</pre>
+![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/fa056cc6-f348-4ef0-94f9-16f91e99f5d1)
+![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/f629fdf6-2212-4962-bede-7bb05fcb190d)
+![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/3b8c07c3-1696-4580-a20c-d26c5f3b3baf)
