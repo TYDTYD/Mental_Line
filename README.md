@@ -1,5 +1,6 @@
 ## Mental Line
 ![캡처](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/4b99b8f8-e196-4a78-80b7-4d1647d86115)
+![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/1124ace9-c2ca-4a05-afb9-4637537f931e)
 ### 프로젝트 소개
 - 게임 장르 : 하이퍼 캐쥬얼
 - 제작 기간 : 2022.07 ~ 2022.09
@@ -23,7 +24,102 @@
 - 그래플링 로직 개발
 <pre>
   <code>
-    
+    private void Awake()
+    {
+        lr = GetComponent<LineRenderer>();
+        lr.enabled = false;
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+        hook.Grapple += Grapple;
+        dir = transform.right + 2f * transform.up;
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        transform.position = player.transform.position;
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(Time.timeScale == 1)
+            {
+                gr.Play();
+
+            }
+            StartGrapple();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            StopGrapple();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        DrawRope();
+    }
+
+    void StartGrapple()
+    {
+        lr.enabled = true;
+        RaycastHit hit;
+        if (Physics.Raycast(player.transform.position, dir, out hit, maxDistance, WhatIsGrappleable))
+        {
+            hook.gameObject.SetActive(true);
+            grapplePoint = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y - (hit.collider.transform.lossyScale.y / 2f));
+            lr.positionCount = 2;
+            currentGrapplePoint = transform.position;
+        }
+        else
+        {
+            hook.gameObject.SetActive(false);
+        }
+    }
+
+    void DrawRope()
+    {
+        if (lr.positionCount == 0) return;
+
+        currentGrapplePoint = Vector3.MoveTowards(currentGrapplePoint, grapplePoint, Time.deltaTime * speed);
+
+        lr.SetPosition(0, transform.position+new Vector3(0,0.3f));
+        lr.SetPosition(1, currentGrapplePoint);
+    }
+    void StopGrapple()
+    {
+        lr.positionCount = 0;
+        Destroy(joint);
+    }
+    public bool IsGrappling()
+    {
+        return joint != null;
+    }
+    public Vector3 GetGrapplePoint()
+    {
+        return grapplePoint;
+    }
+    public Vector3 GetHookPoint()
+    {
+        return currentGrapplePoint;
+    }
+    void Grapple()
+    {
+        joint = player.gameObject.AddComponent<SpringJoint>();
+        
+        joint.autoConfigureConnectedAnchor = false;
+        joint.connectedAnchor = grapplePoint;
+
+        float distanceFromPoint = Vector3.Distance(player.transform.position, grapplePoint);
+        
+        joint.maxDistance = distanceFromPoint;
+        joint.minDistance = 0f;
+        joint.spring = 5f;
+        joint.damper = 10f;
+        joint.massScale = 100f;
+    }
+}
   </code>
 </pre>
 - 영상 하나 넣으면 좋은데
