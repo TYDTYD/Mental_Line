@@ -30,7 +30,8 @@
     그래플링 로직 개발
   </summary>
 <pre>
-  <code>
+
+```cs
     private void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -126,7 +127,7 @@
         joint.damper = 10f;
         joint.massScale = 100f;
     }
-  </code>
+```
 </pre>
 </details>
 
@@ -135,17 +136,8 @@
     Google Play 로그인 구현
   </summary>
 <pre>
-  <code>
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
-using GooglePlayGames.BasicApi.SavedGame;
-using GooglePlayGames.BasicApi.Events;
-
-
+  
+```cs
 public class GPGSBinder
 {
 
@@ -290,19 +282,11 @@ public class GPGSBinder
     }
 
 }
-  </code>
+```
 </pre>
 <pre>
-  <code>
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
-using GooglePlayGames.BasicApi.SavedGame;
-using GooglePlayGames.BasicApi.Events;
-
+  
+```cs
 public class GooglePlayLogin : MonoBehaviour
 {
 
@@ -319,7 +303,7 @@ public class GooglePlayLogin : MonoBehaviour
         log = $"{success}, {localUser.userName}, {localUser.id}, {localUser.state}, {localUser.underage}");
     }
 }
-  </code>
+```
 </pre>
 </details>
 
@@ -330,16 +314,8 @@ public class GooglePlayLogin : MonoBehaviour
     GPGS를 통한 랭킹 시스템 도입
   </summary>
 <pre>
-  <code>
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
-using GooglePlayGames.BasicApi.SavedGame;
-using GooglePlayGames.BasicApi.Events;
 
+```cs
 public class GooglePlayAPI : MonoBehaviour
 {
 
@@ -391,7 +367,7 @@ public class GooglePlayAPI : MonoBehaviour
         GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_5);
     }
 }
-  </code>
+```
 </pre>  
 </details>
 
@@ -402,13 +378,8 @@ public class GooglePlayAPI : MonoBehaviour
     UI/UX 코드
   </summary>
 <pre>
-  <code>
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
+```cs
 public class LevelSelection : MonoBehaviour
 {
     string log;
@@ -612,7 +583,7 @@ public class LevelSelection : MonoBehaviour
         TreasureView.SetActive(false);
     }
 }
-  </code>
+```
 </pre>  
 </details>
 
@@ -623,15 +594,8 @@ public class LevelSelection : MonoBehaviour
     재화 및 사운드 관리 코드
   </summary>
 <pre>
-  <code>
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-
+  
+```cs
 public class GameManager : MonoBehaviour
 {
     public GameObject FirstDestinationView;
@@ -685,10 +649,6 @@ public class GameManager : MonoBehaviour
             }
         };
     }
-
-
-
-
 
     public void ClickHome()
     {
@@ -848,19 +808,11 @@ public class GameManager : MonoBehaviour
         StarView.SetActive(false);
     }
 }
-  </code>
+```
 </pre>
 <pre>
-  <code>
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-
+```cs
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
@@ -1018,9 +970,6 @@ public class SoundManager : MonoBehaviour
                 }
             }
         }
-
-
-
     }
     public void HomeBGM()
     {
@@ -1055,12 +1004,9 @@ public class SoundManager : MonoBehaviour
                 assetReference_SFX[i].ReleaseAsset();
             }
         }
-        
-
     }
-
 }
-  </code>
+```
 </pre>
 </details>
 
@@ -1069,15 +1015,8 @@ public class SoundManager : MonoBehaviour
     게임 데이터 관리 코드
   </summary>
 <pre>
-  <code>
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System;
-using GoogleMobileAds.Api;
-
+  
+```cs
 public class MainManager : MonoBehaviour
 {
     // 설정
@@ -1475,8 +1414,6 @@ public class MainManager : MonoBehaviour
         PlayerPrefs.SetInt("Day7", 1);
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -1545,8 +1482,6 @@ public class MainManager : MonoBehaviour
         // 사용자가 광고를 중간에 닫았을 때
 
         // 출석체크 리워드 광고 끝 ---------
-
-
 
         // 사운드
         PlayerPrefs.GetInt("sound", 1);
@@ -2106,6 +2041,6 @@ public class MainManager : MonoBehaviour
     }
     
 }
-  </code>
+```
 </pre>
 </details>
