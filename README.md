@@ -127,9 +127,7 @@
         joint.massScale = 100f;
     }
   </code>
-</pre>  
-</details>
-</pre>  
+</pre>
 </details>
 
 <details>
