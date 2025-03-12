@@ -1012,7 +1012,7 @@ public class SoundManager : MonoBehaviour
 
 <details>
   <summary>
-    게임 데이터 관리 코드
+    PlayerPrefs를 활용한 게임 데이터 관리 코드
   </summary>
 <pre>
   
