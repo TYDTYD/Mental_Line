@@ -1,28 +1,21 @@
-## Mental Line
+# Mental Line
 ![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/14203676-ccde-4794-8491-cc9a0d11f12c)
 ![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/1124ace9-c2ca-4a05-afb9-4637537f931e)
 
-### [플레이 영상](https://youtu.be/JhcfNx301ok)
+## [플레이 영상](https://youtu.be/JhcfNx301ok)
 
-### 프로젝트 소개
+## 프로젝트 소개
 - 게임 장르 : 하이퍼 캐쥬얼
 - 제작 기간 : 2022.07 ~ 2022.09
 - 프로젝트 목표 : 협업을 통한 경험 및 플레이스토어 출시
 - 게임 소개 : 멘탈 라인과 함께 그래플링을 하며 나아가는 병아리의 좌충우돌 탐험 이야기
 
-### 개발 규모
+## 개발 규모
 - 팀 인원 : 8명 (개발 PM 2, 개발 2, 사업 PM 1, 마케팅 1, 기획 2)
 - 나의 역할 : 개발자 (게임 내 모든 로직 개발)
 
-### 겪었던 힘들었던 점들
-- 개발 협업이 처음이라 Github를 통해 여러번 코드 충돌을 겪었습니다
-- 플레이어 움직임 로직 설계 시 여러 사용자마다 다른 결과가 나와서 당황스러웠습니다
-- 알고보니 고정 프레임으로 설계를 하지 않음으로 인한 문제였습니다
-- 교훈 : 내 환경에서 결과가 잘 나온다고 만족하면 안되며, 다른 환경에서의 테스트도 중요하고 필요하다는 것을 깨달았습니다
-- 최적화를 고려하지 않음으로써 생긴 프레임 드랍 및 심각한 버그 초래 (GC의 부담을 덜어줘야 한다는 점 깨달았습니다)
-- 최적화의 중요성을 깨달았으며, 설계가 매우 중요하다는 것을 깨달았습니다
-### 기술 설명서
-- GitHub 및 Github desktop을 통한 협업 개발
+# 기술 경험
+## GPGS를 통한 랭킹 시스템 구현
 
 <details>
   <summary>
@@ -134,7 +127,6 @@
   <summary>
     Google Play 로그인 구현
   </summary>
-<pre>
   
 ```cs
 public class GPGSBinder
@@ -282,8 +274,6 @@ public class GPGSBinder
 
 }
 ```
-</pre>
-<pre>
   
 ```cs
 public class GooglePlayLogin : MonoBehaviour
@@ -303,7 +293,6 @@ public class GooglePlayLogin : MonoBehaviour
     }
 }
 ```
-</pre>
 </details>
 
 ![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/fa056cc6-f348-4ef0-94f9-16f91e99f5d1)
@@ -312,7 +301,6 @@ public class GooglePlayLogin : MonoBehaviour
   <summary>
     GPGS를 통한 랭킹 시스템 도입
   </summary>
-<pre>
 
 ```cs
 public class GooglePlayAPI : MonoBehaviour
@@ -367,7 +355,6 @@ public class GooglePlayAPI : MonoBehaviour
     }
 }
 ```
-</pre>  
 </details>
 
 ![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/3b8c07c3-1696-4580-a20c-d26c5f3b3baf)
@@ -376,8 +363,7 @@ public class GooglePlayAPI : MonoBehaviour
   <summary>
     UI/UX 코드
   </summary>
-<pre>
-
+  
 ```cs
 public class LevelSelection : MonoBehaviour
 {
@@ -583,7 +569,6 @@ public class LevelSelection : MonoBehaviour
     }
 }
 ```
-</pre>  
 </details>
 
 ![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/f629fdf6-2212-4962-bede-7bb05fcb190d)
@@ -592,7 +577,6 @@ public class LevelSelection : MonoBehaviour
   <summary>
     재화 및 사운드 관리 코드
   </summary>
-<pre>
   
 ```cs
 public class GameManager : MonoBehaviour
@@ -808,8 +792,6 @@ public class GameManager : MonoBehaviour
     }
 }
 ```
-</pre>
-<pre>
 
 ```cs
 public class SoundManager : MonoBehaviour
@@ -1006,14 +988,12 @@ public class SoundManager : MonoBehaviour
     }
 }
 ```
-</pre>
 </details>
 
 <details>
   <summary>
     PlayerPrefs를 활용한 게임 데이터 관리 코드
   </summary>
-<pre>
   
 ```cs
 public class MainManager : MonoBehaviour
@@ -2041,5 +2021,4 @@ public class MainManager : MonoBehaviour
     
 }
 ```
-</pre>
 </details>
