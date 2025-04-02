@@ -16,119 +16,65 @@
 
 # 기술 경험
 ## GPGS를 통한 랭킹 시스템 구현
-![image](https://github.com/user-attachments/assets/3f7b6aa0-a985-4ba9-89e7-7a5fea258c77)
-
-구글 플레이 계정과 연동하여 게임 접속 시 자동으로 로그인되도록 구현하였습니다.
-
-![image](https://github.com/user-attachments/assets/e364d336-b59b-4f71-8e51-39a3209735b7)
-
-각 스테이지마다 유저의 점수를 저장하여 각 스테이지를 플레이한 유저들과 점수를 비교할 수 있도록 대시보드를 구현하였습니다.
-
-![image](https://github.com/user-attachments/assets/1acea7eb-f74f-4599-9159-0437835e4892)
-
-Google Play Game Service 내에 존재하는 Leader Board 기능을 사용해 랭킹 시스템을 구현했습니다.
+![image](https://github.com/user-attachments/assets/84f65161-dc27-464c-9b06-c5493d389978)
 
 <details>
   <summary>
-    그래플링 로직 개발
+    GPGS를 통한 랭킹 시스템 도입
   </summary>
 
 ```cs
-    private void Awake()
+public class GooglePlayAPI : MonoBehaviour
+{
+
+    public void RankingE1()
     {
-        lr = GetComponent<LineRenderer>();
-        lr.enabled = false;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player");
-        hook.Grapple += Grapple;
-        dir = transform.right + 2f * transform.up;
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_1);
     }
 
-    // Update is called once per frame
-    private void Update()
+    public void RankingE2()
     {
-        transform.position = player.transform.position;
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(Time.timeScale == 1)
-            {
-                gr.Play();
-
-            }
-            StartGrapple();
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            StopGrapple();
-        }
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_2);
     }
 
-    private void LateUpdate()
+    public void RankingE3()
     {
-        DrawRope();
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_3);
+    }
+    public void RankingE4()
+    {
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_4);
+    }
+    public void RankingE5()
+    {
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_5);
     }
 
-    void StartGrapple()
+    public void RankingH1()
     {
-        lr.enabled = true;
-        RaycastHit hit;
-        if (Physics.Raycast(player.transform.position, dir, out hit, maxDistance, WhatIsGrappleable))
-        {
-            hook.gameObject.SetActive(true);
-            grapplePoint = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y - (hit.collider.transform.lossyScale.y / 2f));
-            lr.positionCount = 2;
-            currentGrapplePoint = transform.position;
-        }
-        else
-        {
-            hook.gameObject.SetActive(false);
-        }
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_1);
     }
 
-    void DrawRope()
+    public void RankingH2()
     {
-        if (lr.positionCount == 0) return;
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_2);
+    }
 
-        currentGrapplePoint = Vector3.MoveTowards(currentGrapplePoint, grapplePoint, Time.deltaTime * speed);
+    public void RankingH3()
+    {
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_3);
+    }
 
-        lr.SetPosition(0, transform.position+new Vector3(0,0.3f));
-        lr.SetPosition(1, currentGrapplePoint);
-    }
-    void StopGrapple()
+    public void RankingH4()
     {
-        lr.positionCount = 0;
-        Destroy(joint);
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_4);
     }
-    public bool IsGrappling()
-    {
-        return joint != null;
-    }
-    public Vector3 GetGrapplePoint()
-    {
-        return grapplePoint;
-    }
-    public Vector3 GetHookPoint()
-    {
-        return currentGrapplePoint;
-    }
-    void Grapple()
-    {
-        joint = player.gameObject.AddComponent<SpringJoint>();
-        
-        joint.autoConfigureConnectedAnchor = false;
-        joint.connectedAnchor = grapplePoint;
 
-        float distanceFromPoint = Vector3.Distance(player.transform.position, grapplePoint);
-        
-        joint.maxDistance = distanceFromPoint;
-        joint.minDistance = 0f;
-        joint.spring = 5f;
-        joint.damper = 10f;
-        joint.massScale = 100f;
+    public void RankingH5()
+    {
+        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_5);
     }
+}
 ```
 </details>
 
@@ -304,284 +250,13 @@ public class GooglePlayLogin : MonoBehaviour
 ```
 </details>
 
-![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/fa056cc6-f348-4ef0-94f9-16f91e99f5d1)
+구글 플레이 계정과 연동하여 게임 접속 시 자동으로 로그인되도록 구현하였습니다.
 
-<details>
-  <summary>
-    GPGS를 통한 랭킹 시스템 도입
-  </summary>
+각 스테이지마다 유저의 점수를 저장하여 각 스테이지를 플레이한 유저들과 점수를 비교할 수 있도록 대시보드를 구현하였습니다.
 
-```cs
-public class GooglePlayAPI : MonoBehaviour
-{
+Google Play Game Service 내에 존재하는 Leader Board 기능을 사용해 랭킹 시스템을 구현했습니다.
 
-    public void RankingE1()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_1);
-    }
-
-    public void RankingE2()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_2);
-    }
-
-    public void RankingE3()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_3);
-    }
-    public void RankingE4()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_4);
-    }
-    public void RankingE5()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_easy_stage_5);
-    }
-
-    public void RankingH1()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_1);
-    }
-
-    public void RankingH2()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_2);
-    }
-
-    public void RankingH3()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_3);
-    }
-
-    public void RankingH4()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_4);
-    }
-
-    public void RankingH5()
-    {
-        GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_hard_stage_5);
-    }
-}
-```
-</details>
-
-![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/3b8c07c3-1696-4580-a20c-d26c5f3b3baf)
-
-<details>
-  <summary>
-    UI/UX 코드
-  </summary>
-  
-```cs
-public class LevelSelection : MonoBehaviour
-{
-    string log;
-    public Button[] lvlbuttons;
-    public Text[] textBestScores;
-    public GameObject View;
-    public GameObject[] LockImages;
-    public Sprite Lock;
-    public Text StarCheck;
-    public GameObject TreasureView;
-    public GameObject TreasureButton;
-    public Button TreasureGetButton;
-    public Sprite OpenTreasure;
-    public Sprite EmptyTreasure;
-    int Check;
-    int S;
-
-    // 버튼 뷰
-    [HideInInspector]
-    public int levelAt;
-    [HideInInspector]
-    public int count;
-    [HideInInspector]
-    public int start;
-
-    // 2차원 배열
-    [System.Serializable]
-    public class Array2D
-    {
-        public GameObject[] arr = new GameObject[3];
-    }
-    public Array2D[] Stars = new Array2D[5];
-
-    
-    public AudioSource click;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        count = PlayerPrefs.GetInt("StageClear1");
-        start= PlayerPrefs.GetInt("Play");
-        levelAt = PlayerPrefs.GetInt("levelAt", 2);
-        S = PlayerPrefs.GetInt("Serotonin", 0);
-        for (int i = 0; i<lvlbuttons.Length; i++)
-        {
-            if (i + 2 > levelAt)
-            {
-                textBestScores[i].text = "";
-                LockImages[i].SetActive(true);
-            }
-            else
-            {
-                textBestScores[i].text = $"{i+1}스테이지 / 최고 점수 " + PlayerPrefs.GetInt("BestScore"+(i+1).ToString()).ToString();
-                if (PlayerPrefs.GetInt("BestScore" + (i + 1).ToString()) >= 3000)
-                {
-                    Stars[i].arr[2].SetActive(true);
-                    Check += 3;
-
-                }
-                else if (PlayerPrefs.GetInt("BestScore" + (i + 1).ToString()) >= 2500)
-                {
-                    Stars[i].arr[1].SetActive(true);
-                    Check += 2;
-                }
-                else if (PlayerPrefs.GetInt("BestScore" + (i + 1).ToString()) >= 2000)
-                {
-                    Stars[i].arr[0].SetActive(true);
-                    Check += 1;
-                }
-            }
-        }
-        StarCheck.text = Check.ToString();
-
-        if (Check != 15)
-        {
-            TreasureGetButton.interactable = false;
-        }
-        else
-        {
-            if (PlayerPrefs.GetInt("TreasureHard", 0) == 0)
-            {
-                TreasureButton.GetComponent<Image>().sprite = OpenTreasure;
-                GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_master_of_master, success => log = $"{success}");
-            }
-            else if (PlayerPrefs.GetInt("TreasureHard", 0) == 1)
-            {
-                TreasureButton.GetComponent<Image>().sprite = EmptyTreasure;
-            }
-        }
-        
-    }
-
-
-    public void Btn1()
-    {
-        click.Play();
-        SceneManager.LoadScene(2);
-        Time.timeScale = 1;
-    }
-
-    public void Btn2()
-    {
-        click.Play();
-        if (PlayerPrefs.GetInt("StageClear1") == 0)
-        {
-            View.SetActive(true);
-        }
-        else
-        {
-            SceneManager.LoadScene(3);
-            Time.timeScale = 1;
-        }
-    }
-
-    public void Btn3()
-    {
-        click.Play();
-        if (PlayerPrefs.GetInt("StageClear2") == 0)
-        {
-            View.SetActive(true);
-        }
-        else
-        {
-            SceneManager.LoadScene(4);
-            Time.timeScale = 1;
-        }   
-    }
-
-    public void Btn4()
-    {
-        click.Play();
-        if (PlayerPrefs.GetInt("StageClear3") == 0)
-        {
-            View.SetActive(true);
-        }
-        else
-        {
-            SceneManager.LoadScene(5);
-            Time.timeScale = 1;
-        }
-    }
-
-    public void Btn5()
-    {
-        click.Play();
-        if (PlayerPrefs.GetInt("StageClear4") == 0)
-        {
-            View.SetActive(true);
-        }
-        else
-        {
-            SceneManager.LoadScene(6);
-            Time.timeScale = 1;
-        }
-    }
-
-    public void BackBtn()
-    {
-        click.Play();
-        SceneManager.LoadScene(0);
-    }
-
-    public void CloseBtn()
-    {
-        click.Play();
-        View.SetActive(false);
-    }
-
-    // 홈버튼
-    public void HomeBtn()
-    {
-        click.Play();
-        SceneManager.LoadScene(0);
-    }
-    // 이전 버튼
-    public void BeforeBtn()
-    {
-        click.Play();
-        SceneManager.LoadScene(11);
-    }
-
-    public void TreasureBtn()
-    {
-        if (PlayerPrefs.GetInt("TreasureHard", 0) == 0)
-        {
-            TreasureView.SetActive(true);
-        }
-    }
-
-    public void TreasureCloseBtn()
-    {
-        TreasureView.SetActive(false);
-    }
-
-    public void TreasureGetBtn()
-    {
-        S += 500;
-        PlayerPrefs.SetInt("Serotonin", S);
-        PlayerPrefs.SetInt("TreasureHard", 1);
-        TreasureButton.GetComponent<Image>().sprite = EmptyTreasure;
-        TreasureView.SetActive(false);
-    }
-}
-```
-</details>
-
-![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/f629fdf6-2212-4962-bede-7bb05fcb190d)
-
+## PlayerPrefs를 활용한 데이터 저장
 <details>
   <summary>
     재화 및 사운드 관리 코드
@@ -2031,3 +1706,352 @@ public class MainManager : MonoBehaviour
 }
 ```
 </details>
+
+재화 또는 스테이지 클리어 여부를 PlayerPrefs 기능을 사용하여 데이터 저장하였습니다.
+
+이를 통해 플레이어는 게임을 껐다 켜도 이전의 플레이를 이어서 할 수 있습니다.
+
+# 트러블 슈팅
+
+## 스테이지를 리로드할 때마다 프레임 드랍 현상 발생
+문제점 : 스테이지를 다시 로드할 때마다 프레임이 점점 감소하는 현상이 발생했습니다.
+
+문제 원인 분석 : 프로파일러를 통해 확인한 결과, 가비지 컬렉터(GC)가 자주 호출되었으며, 과도하게 리소스 사용이 원인이었습니다.
+
+해결책 : 게임 플레이 중 당장 필요하지 않은 오브젝트는 비활성화하여 가비지 컬렉터 호출 빈도를 줄였습니다. 이를 통해 프레임 드랍 현상이 사라졌고, 원활한 플레이가 가능해졌습니다.
+
+## 테스트 환경에 따라 플레이어 속도가 일정하지 않은 문제
+문제점 : 팀원마다 플레이어 속도가 다르게 적용되는 문제가 발생했습니다.
+
+문제 원인 분석 : 속도 관련 처리를 고정된 프레임이 아닌 일반 프레임(Update)에서 호출했기 때문이었습니다.
+
+해결책 : 속도 처리를 고정된 프레임 단위로 실행되는 FixedUpdate 함수로 이동해서 호출하니 해결되었습니다.
+
+# 그 외 개발한 것들
+
+## 레벨디자인
+![image](https://github.com/user-attachments/assets/5d78f103-b564-4edd-ada5-5e915c3d1732)
+
+## 스테이지 UGUI 구현
+![image](https://github.com/user-attachments/assets/12f89c1b-072e-476f-b497-f0e084dacf9f)
+
+<details>
+  <summary>
+    UI/UX 코드
+  </summary>
+  
+```cs
+public class LevelSelection : MonoBehaviour
+{
+    string log;
+    public Button[] lvlbuttons;
+    public Text[] textBestScores;
+    public GameObject View;
+    public GameObject[] LockImages;
+    public Sprite Lock;
+    public Text StarCheck;
+    public GameObject TreasureView;
+    public GameObject TreasureButton;
+    public Button TreasureGetButton;
+    public Sprite OpenTreasure;
+    public Sprite EmptyTreasure;
+    int Check;
+    int S;
+
+    // 버튼 뷰
+    [HideInInspector]
+    public int levelAt;
+    [HideInInspector]
+    public int count;
+    [HideInInspector]
+    public int start;
+
+    // 2차원 배열
+    [System.Serializable]
+    public class Array2D
+    {
+        public GameObject[] arr = new GameObject[3];
+    }
+    public Array2D[] Stars = new Array2D[5];
+
+    
+    public AudioSource click;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        count = PlayerPrefs.GetInt("StageClear1");
+        start= PlayerPrefs.GetInt("Play");
+        levelAt = PlayerPrefs.GetInt("levelAt", 2);
+        S = PlayerPrefs.GetInt("Serotonin", 0);
+        for (int i = 0; i<lvlbuttons.Length; i++)
+        {
+            if (i + 2 > levelAt)
+            {
+                textBestScores[i].text = "";
+                LockImages[i].SetActive(true);
+            }
+            else
+            {
+                textBestScores[i].text = $"{i+1}스테이지 / 최고 점수 " + PlayerPrefs.GetInt("BestScore"+(i+1).ToString()).ToString();
+                if (PlayerPrefs.GetInt("BestScore" + (i + 1).ToString()) >= 3000)
+                {
+                    Stars[i].arr[2].SetActive(true);
+                    Check += 3;
+
+                }
+                else if (PlayerPrefs.GetInt("BestScore" + (i + 1).ToString()) >= 2500)
+                {
+                    Stars[i].arr[1].SetActive(true);
+                    Check += 2;
+                }
+                else if (PlayerPrefs.GetInt("BestScore" + (i + 1).ToString()) >= 2000)
+                {
+                    Stars[i].arr[0].SetActive(true);
+                    Check += 1;
+                }
+            }
+        }
+        StarCheck.text = Check.ToString();
+
+        if (Check != 15)
+        {
+            TreasureGetButton.interactable = false;
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("TreasureHard", 0) == 0)
+            {
+                TreasureButton.GetComponent<Image>().sprite = OpenTreasure;
+                GPGSBinder.Inst.UnlockAchievement(GPGSIds.achievement_master_of_master, success => log = $"{success}");
+            }
+            else if (PlayerPrefs.GetInt("TreasureHard", 0) == 1)
+            {
+                TreasureButton.GetComponent<Image>().sprite = EmptyTreasure;
+            }
+        }
+        
+    }
+
+
+    public void Btn1()
+    {
+        click.Play();
+        SceneManager.LoadScene(2);
+        Time.timeScale = 1;
+    }
+
+    public void Btn2()
+    {
+        click.Play();
+        if (PlayerPrefs.GetInt("StageClear1") == 0)
+        {
+            View.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(3);
+            Time.timeScale = 1;
+        }
+    }
+
+    public void Btn3()
+    {
+        click.Play();
+        if (PlayerPrefs.GetInt("StageClear2") == 0)
+        {
+            View.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(4);
+            Time.timeScale = 1;
+        }   
+    }
+
+    public void Btn4()
+    {
+        click.Play();
+        if (PlayerPrefs.GetInt("StageClear3") == 0)
+        {
+            View.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(5);
+            Time.timeScale = 1;
+        }
+    }
+
+    public void Btn5()
+    {
+        click.Play();
+        if (PlayerPrefs.GetInt("StageClear4") == 0)
+        {
+            View.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
+            Time.timeScale = 1;
+        }
+    }
+
+    public void BackBtn()
+    {
+        click.Play();
+        SceneManager.LoadScene(0);
+    }
+
+    public void CloseBtn()
+    {
+        click.Play();
+        View.SetActive(false);
+    }
+
+    // 홈버튼
+    public void HomeBtn()
+    {
+        click.Play();
+        SceneManager.LoadScene(0);
+    }
+    // 이전 버튼
+    public void BeforeBtn()
+    {
+        click.Play();
+        SceneManager.LoadScene(11);
+    }
+
+    public void TreasureBtn()
+    {
+        if (PlayerPrefs.GetInt("TreasureHard", 0) == 0)
+        {
+            TreasureView.SetActive(true);
+        }
+    }
+
+    public void TreasureCloseBtn()
+    {
+        TreasureView.SetActive(false);
+    }
+
+    public void TreasureGetBtn()
+    {
+        S += 500;
+        PlayerPrefs.SetInt("Serotonin", S);
+        PlayerPrefs.SetInt("TreasureHard", 1);
+        TreasureButton.GetComponent<Image>().sprite = EmptyTreasure;
+        TreasureView.SetActive(false);
+    }
+}
+```
+</details>
+
+## 튜토리얼 구현
+https://youtu.be/JhcfNx301ok
+
+## 스윙 로직 구현
+<details>
+  <summary>
+    그래플링 로직 개발
+  </summary>
+
+```cs
+    private void Awake()
+    {
+        lr = GetComponent<LineRenderer>();
+        lr.enabled = false;
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+        hook.Grapple += Grapple;
+        dir = transform.right + 2f * transform.up;
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        transform.position = player.transform.position;
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(Time.timeScale == 1)
+            {
+                gr.Play();
+
+            }
+            StartGrapple();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            StopGrapple();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        DrawRope();
+    }
+
+    void StartGrapple()
+    {
+        lr.enabled = true;
+        RaycastHit hit;
+        if (Physics.Raycast(player.transform.position, dir, out hit, maxDistance, WhatIsGrappleable))
+        {
+            hook.gameObject.SetActive(true);
+            grapplePoint = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y - (hit.collider.transform.lossyScale.y / 2f));
+            lr.positionCount = 2;
+            currentGrapplePoint = transform.position;
+        }
+        else
+        {
+            hook.gameObject.SetActive(false);
+        }
+    }
+
+    void DrawRope()
+    {
+        if (lr.positionCount == 0) return;
+
+        currentGrapplePoint = Vector3.MoveTowards(currentGrapplePoint, grapplePoint, Time.deltaTime * speed);
+
+        lr.SetPosition(0, transform.position+new Vector3(0,0.3f));
+        lr.SetPosition(1, currentGrapplePoint);
+    }
+    void StopGrapple()
+    {
+        lr.positionCount = 0;
+        Destroy(joint);
+    }
+    public bool IsGrappling()
+    {
+        return joint != null;
+    }
+    public Vector3 GetGrapplePoint()
+    {
+        return grapplePoint;
+    }
+    public Vector3 GetHookPoint()
+    {
+        return currentGrapplePoint;
+    }
+    void Grapple()
+    {
+        joint = player.gameObject.AddComponent<SpringJoint>();
+        
+        joint.autoConfigureConnectedAnchor = false;
+        joint.connectedAnchor = grapplePoint;
+
+        float distanceFromPoint = Vector3.Distance(player.transform.position, grapplePoint);
+        
+        joint.maxDistance = distanceFromPoint;
+        joint.minDistance = 0f;
+        joint.spring = 5f;
+        joint.damper = 10f;
+        joint.massScale = 100f;
+    }
+```
+</details>
+https://blog.naver.com/tmdals5587/222963149404
