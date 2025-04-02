@@ -1,7 +1,7 @@
 # Mental Line
 ![image](https://github.com/TYDTYD/Alone_Or_Together_ver2/assets/48386074/1124ace9-c2ca-4a05-afb9-4637537f931e)
 
-## [플레이 영상](https://youtu.be/JhcfNx301ok)
+## [플레이 영상]([https://youtu.be/JhcfNx301ok](https://youtu.be/Rr_Dhr_3CC4)
 
 ## 프로젝트 소개
 - 게임 장르 : 하이퍼 캐쥬얼
