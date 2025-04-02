@@ -16,6 +16,17 @@
 
 # 기술 경험
 ## GPGS를 통한 랭킹 시스템 구현
+![image](https://github.com/user-attachments/assets/3f7b6aa0-a985-4ba9-89e7-7a5fea258c77)
+
+구글 플레이 계정과 연동하여 게임 접속 시 자동으로 로그인되도록 구현하였습니다.
+
+![image](https://github.com/user-attachments/assets/e364d336-b59b-4f71-8e51-39a3209735b7)
+
+각 스테이지마다 유저의 점수를 저장하여 각 스테이지를 플레이한 유저들과 점수를 비교할 수 있도록 대시보드를 구현하였습니다.
+
+![image](https://github.com/user-attachments/assets/1acea7eb-f74f-4599-9159-0437835e4892)
+
+Google Play Game Service 내에 존재하는 Leader Board 기능을 사용해 랭킹 시스템을 구현했습니다.
 
 <details>
   <summary>
