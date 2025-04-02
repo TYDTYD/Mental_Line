@@ -21,7 +21,6 @@
   <summary>
     그래플링 로직 개발
   </summary>
-<pre>
 
 ```cs
     private void Awake()
@@ -120,7 +119,6 @@
         joint.massScale = 100f;
     }
 ```
-</pre>
 </details>
 
 <details>
