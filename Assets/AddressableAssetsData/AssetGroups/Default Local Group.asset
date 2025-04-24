@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b3ea21280ad7b3143a95de6c0833a5f3
+  m_SerializeEntries:
+  - m_GUID: 5726a24928b285f4b85917a0d1a43d3d
+    m_Address: Item/Yellow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+  - m_GUID: 7ec8af92e46234f4fba3ff497b457793
+    m_Address: Item/Red
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+  - m_GUID: a504b50638952f8448b6f4af96237177
+    m_Address: Map/EasyMode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: ed6d94959382c3c42bf3fea6011cff5f
+    m_Address: Map/NormalMode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 2aa738a3edcc38e4f9246232e74f35d0
+    m_Address: Map/Hard1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 96f249cef9b82344bba8605cdbcf845e
+    m_Address: Map/Hard2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 8f81d38156474cc42af250b483ac384a
+    m_Address: Map/Wave
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 736c4fb2700a48c458225b16c37f7316
+    m_Address: Map/Wave2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 2357d240078341c4280d15205304d2f2
+    m_Address: Map/Wave3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 221a18c8948a6c647814289dfa08dbf8
+    m_Address: Map/Tutorial
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: b82a003deb8c51c449ef690ba9f90c43
+    m_Address: Map/Tutorial2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: c74982f816fcbfb40999143ab71bfa57
+    m_Address: Map/Downhill/Hard
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 6e0a478dbfe5ecc43ad62a22ce11aeee
+    m_Address: Map/Downhill/EasyMode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: c8c2842c1e58bef44a99e2016468ce74
+    m_Address: Map/Downhill/Easy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 27f12f35a0bb0944ba22de7403087459
+    m_Address: Map/Uphill/EasyMode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 9a2f31d5cf104ee4ba4ede00f82e982e
+    m_Address: Map/Uphill/Hard
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 3e35a43c67a6db7468ae1fccbe2c2051
+    m_Address: Map/Uphill/Easy
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: cfac43f152dad514aa32a58b2480f29e
+    m_Address: Map/Flat/EasyMode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: dd39dc3c14416ea4f9b9f78785987798
+    m_Address: Map/Downhill/Hard
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  - m_GUID: 2b6f8ac670f5a9845b31cddae12fbc7e
+    m_Address: Map/Uphill/HardMode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 33206d6259b30834ca7f2de480739fdf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 840960a037e6fed468311b5c5359a13e, type: 2}
+    - {fileID: 11400000, guid: 590301fb285a5664ea46577c1c7a3384, type: 2}

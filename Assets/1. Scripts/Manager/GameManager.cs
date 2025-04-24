@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(2);
-        Time.timeScale = 1;
     }
 
     public void ClickRestart2()
@@ -53,7 +51,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(3);
-        Time.timeScale = 1;
     }
 
     public void ClickRestart3()
@@ -61,7 +58,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(4);
-        Time.timeScale = 1;
     }
 
     public void ClickRestart4()
@@ -69,7 +65,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(5);
-        Time.timeScale = 1;
     }
 
     public void ClickRestart5()
@@ -77,7 +72,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(6);
-        Time.timeScale = 1;
     }
 
     // 이지모드
@@ -86,7 +80,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(13);
-        Time.timeScale = 1;
     }
 
     public void ClickRestartE2()
@@ -94,7 +87,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(14);
-        Time.timeScale = 1;
     }
 
     public void ClickRestartE3()
@@ -102,7 +94,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(15);
-        Time.timeScale = 1;
     }
 
     public void ClickRestartE4()
@@ -110,7 +101,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(16);
-        Time.timeScale = 1;
     }
 
     public void ClickRestartE5()
@@ -118,7 +108,6 @@ public class GameManager : MonoBehaviour
         click.Play();
         // 플레이씬 불러오기
         SceneManager.LoadScene(17);
-        Time.timeScale = 1;
     }
 
     public void ClickStory()
@@ -131,8 +120,8 @@ public class GameManager : MonoBehaviour
     public void ClickNext()
     {
         click.Play();
-        int nexSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nexSceneLoad);
+        int nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneLoad);
         Time.timeScale = 1;
         //SceneManager.LoadScene(11);
     }

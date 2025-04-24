@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,7 +9,7 @@ public class Player : MonoBehaviour
     public GameObject startBlock;
     string log;
 
-    private float Speed=6.5f;
+    private float Speed = 6.5f;
     private SpringJoint spring;
     private Grappling grappling;
     private Rigidbody rig;
@@ -60,8 +58,6 @@ public class Player : MonoBehaviour
     public int scoreSum=0;
     private int itemCount;
     private int itemCount2;
-
-    
 
     // 몬스터 경고
     public GameObject Warning;
@@ -147,11 +143,7 @@ public class Player : MonoBehaviour
                 transform.LookAt(new Vector3(transform.position.x + 1, ((transform.position.x - grappling.GetGrapplePoint().x) / (grappling.GetGrapplePoint().y - transform.position.y)) + transform.position.y));
             }
         }
-
-
     }
-    
-
     private void FixedUpdate()
     {
         // 속도 제한 값 계산
@@ -513,13 +505,11 @@ public class Player : MonoBehaviour
 
     void Dead()
     {
-        
-
         // 게임 실패
         Clear = false;
 
         // 시간 멈춤
-        UnityEngine.Time.timeScale = 0;
+        Time.timeScale = 0;
 
         PlayerPrefs.SetInt("Dopamine", dopamine + itemCount);
         PlayerPrefs.SetInt("DDopamine", dopamine + itemCount);
@@ -551,7 +541,6 @@ public class Player : MonoBehaviour
             hook.SetActive(false);
         }
     }
-
     public void Destination()
     {
         // 게임 성공
@@ -648,16 +637,11 @@ public class Player : MonoBehaviour
         }
             
     }
-
-
     public void Num()
     {
         scoreSum += 10;
         TotalScore.text = scoreSum.ToString();
     }
-
-    
-
     // 도파민
     public void Item_()
     {
@@ -665,14 +649,12 @@ public class Player : MonoBehaviour
         Dopamine.text = itemCount.ToString();
         Dopamine2.text = itemCount.ToString();
     }
-
     public void Item_2()
     {
         // 화면에 텍스트 출력
         Serotonin.text = itemCount2.ToString();
         Serotonin2.text = itemCount2.ToString();
     }
-
     // 게임 시작 전 카운트
     IEnumerator BeforeStart()
     {
@@ -686,7 +668,5 @@ public class Player : MonoBehaviour
         img.gameObject.SetActive(false);
 
         gp.isPlay = true;
-
     }
-
 }

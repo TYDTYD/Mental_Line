@@ -62,4 +62,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0. Scenes/Ranking.unity
     guid: 429e50b3cc62ce94494347dad466fa0f
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 0c5117acc25a24644a055b64edfd51ca, type: 2}
