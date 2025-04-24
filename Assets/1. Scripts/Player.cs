@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -78,6 +79,8 @@ public class Player : MonoBehaviour
     // 별점 개수UI
     public GameObject[] Stars;
 
+    List<GameObject> DeletedObjects = new List<GameObject>();
+
     private void Awake()
     {
         index = PlayerPrefs.GetInt("StageClear" + (SceneManager.GetActiveScene().buildIndex - 1));
@@ -107,7 +110,6 @@ public class Player : MonoBehaviour
             {
                 BGM[i].Play();
             }
-            
         }
         StartCoroutine(BeforeStart());
     }
@@ -282,12 +284,14 @@ public class Player : MonoBehaviour
                 Item_();
                 Num();
                 collision.gameObject.SetActive(false);
+                DeletedObjects.Add(collision.gameObject);
                 break;
 
             case "ItemB":
                 itemCount2++;
                 Item_2();
                 collision.gameObject.SetActive(false);
+                DeletedObjects.Add(collision.gameObject);
                 break;
 
             case "Ring":
@@ -474,7 +478,6 @@ public class Player : MonoBehaviour
                 StartCoroutine("Time1");
             }
         }
-       
     }
 
     // 콤보 시 이펙트 효과
@@ -545,7 +548,7 @@ public class Player : MonoBehaviour
     {
         // 게임 성공
         Clear = true;
-        UnityEngine.Time.timeScale = 0;
+        Time.timeScale = 0;
         SuccessScore.text = TotalScore.text;
 
         PlayerPrefs.SetInt("Dopamine", dopamine + itemCount);
@@ -586,7 +589,7 @@ public class Player : MonoBehaviour
     {
         // 게임 성공
         Clear = true;
-        UnityEngine.Time.timeScale = 0;
+        Time.timeScale = 0;
         SuccessScore.text = TotalScore.text;
 
         PlayerPrefs.SetInt("Dopamine", dopamine + itemCount);
@@ -668,5 +671,32 @@ public class Player : MonoBehaviour
         img.gameObject.SetActive(false);
 
         gp.isPlay = true;
+    }
+    void ReviveObj()
+    {
+        foreach(var obj in DeletedObjects)
+        {
+            obj.SetActive(true);
+        }
+        DeletedObjects.Clear();
+    }
+    public void Restart()
+    {
+        ReviveObj();
+        itemCount = 0;
+        itemCount2 = 0;
+        scoreSum = 0;
+        Item_();
+        Item_2();
+        TotalScore.text = scoreSum.ToString();
+        transform.rotation = Quaternion.Euler(new Vector3(0, 90));
+        transform.position = startBlock.transform.position + new Vector3(0, 1);
+        rig.velocity = new Vector3(0, 0);
+        startBlock.SetActive(true);
+        hook.SetActive(true);
+        gameObject.SetActive(true);
+        DeadView.SetActive(false);
+        Time.timeScale = 1f;
+        StartCoroutine(BeforeStart());
     }
 }

@@ -117,6 +117,101 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Map
+  - m_GUID: 2ec775b391d22704cb5ffce9a9e7f736
+    m_Address: Player/Bird0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 97f78fbd76d448748a90697b134dd3aa
+    m_Address: Player/Bird1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 0c3a67ca1ec78f44fa5503f23aad8ead
+    m_Address: Player/Bird2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: baa8cc61c5f7ec54086de4009dfd9dd6
+    m_Address: Player/Bird3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 3753d2e15da349640b3baafcb2ee094c
+    m_Address: Player/Bird4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 8789b95a1b979964dba44e1c5b6e0902
+    m_Address: Player/Bird5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: e55b6fb64f9050343a7289bd8b63e6be
+    m_Address: Player/Bird6
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: bbf85fa61705ed84caaeca20baf0922d
+    m_Address: Player/Bird7
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 9992cbe6d02688d41bbb9ad7d268e8a1
+    m_Address: Player/Bird8
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: cce3e805e1d0d5c4e8ebf70fadbdb5f9
+    m_Address: Player/Bird9
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 2fc77d13ea4d62a4db90222708761afe
+    m_Address: Player/Bird10
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 59d90ae4c56245b478d1a73d5761be3c
+    m_Address: Player/Bird11
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 3e8ecd74f45e47b4c8f7e30612a28ec4
+    m_Address: Player/Bird12
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: e0c1efd30243ebe4b94471a93cebfd2f
+    m_Address: Player/Bird13
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 0c01ef6a0104dac41836765070667794
+    m_Address: Player/Bird14
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 0943eda877d7f634da51fd93cb48529f
+    m_Address: Player/Bird15
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 400e7a17f390c4c4b9b0c4682282d81f
+    m_Address: Player/Bird16
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: 46510cb47fe93a846b895f9a02c73b64
+    m_Address: Player/Bird17
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+  - m_GUID: c19ea996263106d48ad07abd2d729ed1
+    m_Address: Destination/BlackHole
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Destination
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 33206d6259b30834ca7f2de480739fdf, type: 2}
   m_SchemaSet:

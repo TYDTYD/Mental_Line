@@ -81,6 +81,8 @@ MonoBehaviour:
     - default
     - Item
     - Map
+    - Player
+    - Destination
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: a42ec039993dcbe448e06dcf4151d255, type: 2}

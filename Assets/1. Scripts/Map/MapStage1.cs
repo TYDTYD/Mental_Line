@@ -1,18 +1,42 @@
 using UnityEngine;
-
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Collections;
+using System.Collections.Generic;
 public class MapStage1 : MonoBehaviour
 {
-    // �⺻ ����
-    [SerializeField]
-    GameObject map1zone, Destination, DeadZone;
-    // ���� �� �Ʒ� [0] : �Ʒ�  / [1] : ��
-    [SerializeField]
+    [SerializeField] AssetReference map1Aref;
+    [SerializeField] AssetReference DestinationAref;
+    [SerializeField] AssetReference[] map2Aref;
+
+    GameObject map1zone, Destination;
     GameObject[] map2zone;
-    int r1, r2, r3;
+    int r1, r2, r3, loadCount;
     // y�� ����
     [HideInInspector]
     public float a1, a2, b1, b2, c;
-    void Start() => Spawn();
+
+    IEnumerator Start()
+    {
+        map2zone = new GameObject[map2Aref.Length];
+
+        var handle1 = Addressables.LoadAssetAsync<GameObject>(map1Aref);
+        yield return handle1;
+        map1zone = handle1.Result;
+
+        var handle2 = Addressables.LoadAssetAsync<GameObject>(DestinationAref);
+        yield return handle2;
+        Destination = handle2.Result;
+
+        for (int i = 0; i < map2Aref.Length; i++)
+        {
+            var handle = Addressables.LoadAssetAsync<GameObject>(map2Aref[i]);
+            yield return handle;
+            map2zone[i] = handle.Result;
+        }
+
+        Spawn();
+    }
 
     void Spawn()
     {
@@ -90,25 +114,21 @@ public class MapStage1 : MonoBehaviour
         {
             Instantiate(map1zone, new Vector3(240, -39, 0), Quaternion.identity);
             Instantiate(Destination, new Vector3(302, -49, 0), Quaternion.identity);
-            Instantiate(DeadZone, new Vector3(348, -55, 3.529f), Quaternion.identity);
         }
         else if (r1 == 0 && r3 == 1)
         {
             Instantiate(map1zone, new Vector3(240, 0, 0), Quaternion.identity);
             Instantiate(Destination, new Vector3(302, -9, 0), Quaternion.identity);
-            Instantiate(DeadZone, new Vector3(348, -17, 3.529f), Quaternion.identity);
         }
         else if (r1 == 1 && r3 == 0)
         {
             Instantiate(map1zone, new Vector3(240, 0, 0), Quaternion.identity);
             Instantiate(Destination, new Vector3(302, -9, 0), Quaternion.identity);
-            Instantiate(DeadZone, new Vector3(348, -17, 3.529f), Quaternion.identity);
         }
         else if (r1 == 1 && r3 == 1)
         {
             Instantiate(map1zone, new Vector3(240, 37.5f, 0), Quaternion.identity);
             Instantiate(Destination, new Vector3(302, 27, 0), Quaternion.identity);
-            Instantiate(DeadZone, new Vector3(348, 21, 3.529f), Quaternion.identity);
         }
     }
 }

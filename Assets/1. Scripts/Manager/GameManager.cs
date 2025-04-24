@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
     public GameObject FirstDestinationView;
     public GameObject DestinaionView;
     public GameObject[] Player;
+    public GameObject player;
     public GameObject PauseView;
     public Text TimeCount;
     public AudioSource click;
-
     public GameObject StarView;
     void Awake()
     {
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
                 if (PlayerPrefs.GetInt($"Fit{i}") == 1)
                 {
                     Player[i].SetActive(true);
+                    player = Player[i];
                 }
                 else
                 {
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         click.Play();
         // 플레이씬 불러오기
-        SceneManager.LoadScene(2);
+        player.GetComponent<Player>().Restart();
     }
 
     public void ClickRestart2()
