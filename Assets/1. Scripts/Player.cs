@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using GoogleMobileAds.Api;  // 전면광고
 
 public class Player : MonoBehaviour
 {
@@ -163,113 +162,6 @@ public class Player : MonoBehaviour
 
     // 전면 광고 - Dead
     public Canvas myCan;
-    private InterstitialAd interstitial;
-
-    private void RequestInterstitial()
-    {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712"; // 테스트 코드
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-
-        // Initialize an InterstitialAd.
-        this.interstitial = new InterstitialAd(adUnitId);
-        // Called when the ad is closed.
-        this.interstitial.OnAdClosed += HandleOnAdClosed;
-
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
-        // Load the interstitial with the request.
-        this.interstitial.LoadAd(request);
-    }
-
-    public void HandleOnAdClosed(object sender, System.EventArgs args)
-    {
-        gameObject.SetActive(false);
-        DeadView.SetActive(true);
-        hook.SetActive(false);
-    }
-
-    // 전면 광고 - Clear 하드모드
-    private InterstitialAd interstitial2;
-
-    private void RequestInterstitial2()
-    {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712"; // 테스트 코드
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-
-        // Initialize an InterstitialAd.
-        this.interstitial2 = new InterstitialAd(adUnitId);
-        // Called when the ad is closed.
-        this.interstitial2.OnAdClosed += HandleOnAdClosed2;
-
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
-        // Load the interstitial with the request.
-        this.interstitial2.LoadAd(request);
-    }
-
-    public void HandleOnAdClosed2(object sender, System.EventArgs args)
-    {
-        gameObject.SetActive(false);
-        // 첫 클리어 시 해금 문구 발생
-        /*if (index == 0 && SceneManager.GetActiveScene().buildIndex != 10)
-        {
-            FirstDestinationView.SetActive(true);
-        }
-        else
-        {
-            DestinaionView.SetActive(true);
-        }*/
-        DestinaionView.SetActive(true);
-        hook.SetActive(false);
-    }
-    // 전면 광고 - Clear 이지모드
-    private InterstitialAd interstitial3;
-    private void RequestInterstitial3()
-    {
-#if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712"; // 테스트 코드
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-
-        // Initialize an InterstitialAd.
-        this.interstitial3 = new InterstitialAd(adUnitId);
-        // Called when the ad is closed.
-        this.interstitial3.OnAdClosed += HandleOnAdClosed3;
-
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
-        // Load the interstitial with the request.
-        this.interstitial3.LoadAd(request);
-    }
-
-    public void HandleOnAdClosed3(object sender, System.EventArgs args)
-    {
-        gameObject.SetActive(false);
-        if (indexE == 0 && SceneManager.GetActiveScene().buildIndex != 10)
-        {
-            FirstDestinationView.SetActive(true);
-        }
-        else
-        {
-            DestinaionView.SetActive(true);
-        }
-        hook.SetActive(false);
-    }
-
-
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -502,7 +394,6 @@ public class Player : MonoBehaviour
 
         // 최적화 관련 코루틴 코드
         yield return YieldInstructionCache.WaitForSeconds(1);
-        //yield return new WaitForSeconds(1);
         ComboView.SetActive(false);
     }
 
@@ -518,31 +409,8 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetInt("DDopamine", dopamine + itemCount);
         PlayerPrefs.SetInt("Serotonin", serotonin + itemCount2);
 
-        /*// 전면 광고
-        RequestInterstitial();
-        if (this.interstitial.IsLoaded())
-        {
-            this.interstitial.Show();
-            myCan.sortingOrder = -1;
-        }*/
-
-        if (PlayerPrefs.GetInt("Noads") == 1)
-        {
-            DeadView.SetActive(true);
-            hook.SetActive(false);
-        }
-        else if (PlayerPrefs.GetInt("Noads") == 0)
-        {
-            // 전면 광고
-            RequestInterstitial();
-            if (this.interstitial.IsLoaded())
-            {
-                this.interstitial.Show();
-                myCan.sortingOrder = -1;
-            }
-            DeadView.SetActive(true);
-            hook.SetActive(false);
-        }
+        DeadView.SetActive(true);
+        hook.SetActive(false);
     }
     public void Destination()
     {
@@ -555,34 +423,9 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetInt("DDopamine", dopamine + itemCount);
         PlayerPrefs.SetInt("Serotonin", serotonin + itemCount2);
         PlayerPrefs.SetInt("StageClear" + (SceneManager.GetActiveScene().buildIndex - 1), index + 1);
-
-        /*RequestInterstitial2();
-        if (this.interstitial2.IsLoaded())
-        {
-            this.interstitial2.Show();
-            myCan.sortingOrder = -1;
-        }*/
-
-        if (PlayerPrefs.GetInt("Noads") == 1)
-        {
-            DestinaionView.SetActive(true);
-            hook.SetActive(false);
-        }
-        else if (PlayerPrefs.GetInt("Noads") == 0)
-        {
-            RequestInterstitial2();
-            if (this.interstitial2.IsLoaded())
-            {
-                this.interstitial2.Show();
-                myCan.sortingOrder = -1;
-
-            }
-            DestinaionView.SetActive(true);
-            hook.SetActive(false);
-        }
-            /*DestinaionView.SetActive(true);
-        PlayerPrefs.SetInt("StageClear" + (SceneManager.GetActiveScene().buildIndex - 1), index + 1);
-        hook.SetActive(false);*/
+       
+        DestinaionView.SetActive(true);
+        hook.SetActive(false);
     }
     // 이지모드
     public void DestinationEasy()
@@ -597,48 +440,17 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetInt("Serotonin", serotonin + itemCount2);
 
         PlayerPrefs.SetInt("StageClearE" + (SceneManager.GetActiveScene().buildIndex - 12), index + 1);
-        /*RequestInterstitial3();
-        if (this.interstitial3.IsLoaded())
-        {
-            this.interstitial3.Show();
-            myCan.sortingOrder = -1;
-        }*/
 
-        if (PlayerPrefs.GetInt("Noads") == 1)
+        // 첫 클리어 시 해금 문구 발생
+        if (indexE == 0 && SceneManager.GetActiveScene().buildIndex != 10)
         {
-            // 첫 클리어 시 해금 문구 발생
-            if (indexE == 0 && SceneManager.GetActiveScene().buildIndex != 10)
-            {
-                FirstDestinationView.SetActive(true);
-            }
-            else
-            {
-                DestinaionView.SetActive(true);
-            }
-            //PlayerPrefs.SetInt("StageClearE" + (SceneManager.GetActiveScene().buildIndex - 12), index + 1);
-            hook.SetActive(false);
+            FirstDestinationView.SetActive(true);
         }
-        else if(PlayerPrefs.GetInt("Noads") == 0)
+        else
         {
-            RequestInterstitial3();
-            if (this.interstitial3.IsLoaded())
-            {
-                this.interstitial3.Show();
-                myCan.sortingOrder = -1;
-
-            }
-            // 첫 클리어 시 해금 문구 발생
-            if (indexE == 0 && SceneManager.GetActiveScene().buildIndex != 10)
-            {
-                FirstDestinationView.SetActive(true);
-            }
-            else
-            {
-                DestinaionView.SetActive(true);
-            }
-            hook.SetActive(false);
+            DestinaionView.SetActive(true);
         }
-            
+        hook.SetActive(false);
     }
     public void Num()
     {
