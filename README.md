@@ -14,6 +14,52 @@
 - 나의 역할 : 개발자 (게임 내 모든 로직 개발)
 
 # 기술 경험
+## Addressable를 통한 리소스 비동기 로드
+
+<details>
+  <summary>
+    Addressable를 통한 GameObject 로드
+  </summary>
+
+  ```cs
+using System.Collections;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+
+public class MapEasyStage1 : MonoBehaviour
+{
+    [SerializeField] AssetReference map1Aref;
+    [SerializeField] AssetReference DestinationAref;
+
+    GameObject Map1;
+    GameObject Destination;
+
+    IEnumerator Start()
+    {
+        var handle1 = Addressables.LoadAssetAsync<GameObject>(map1Aref);
+        yield return handle1;
+        Map1 = handle1.Result;
+
+        var handle2 = Addressables.LoadAssetAsync<GameObject>(DestinationAref);
+        yield return handle2;
+        Destination = handle2.Result;
+
+        Spawn();
+    }
+
+    void Spawn()
+    {
+        Instantiate(Map1, new Vector3(0, 0), Quaternion.identity);
+        Instantiate(Map1, new Vector3(60, 0), Quaternion.identity);
+        Instantiate(Map1, new Vector3(120, 0), Quaternion.identity);
+        Instantiate(Map1, new Vector3(180, 0), Quaternion.identity);
+        Instantiate(Map1, new Vector3(240, 0), Quaternion.identity);
+        Instantiate(Destination, new Vector3(301.67f, -9.26f),Quaternion.identity);
+    }
+}
+```
+</details>
+
 ## GPGS를 통한 랭킹 시스템 구현
 ![image](https://github.com/user-attachments/assets/84f65161-dc27-464c-9b06-c5493d389978)
 
