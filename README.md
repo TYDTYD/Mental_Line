@@ -16,6 +16,8 @@
 # 기술 경험
 ## Addressable를 통한 리소스 비동기 로드
 
+![Addressable](https://github.com/user-attachments/assets/1f357b7d-2fec-4386-be99-3f6399b12d68)
+
 <details>
   <summary>
     Addressable를 통한 GameObject 로드
